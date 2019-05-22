@@ -1,17 +1,11 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of typeUserBEAN
  *
  * @author osval
  */
-class typeUserBEAN {
+class TypeUserBEAN {
     
     private $idTypeUser;
     private $typeUser;
@@ -31,6 +25,5 @@ class typeUserBEAN {
     function setTypeUser($typeUser) {
         $this->typeUser = $typeUser;
     }
-
 
 }

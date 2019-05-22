@@ -13,7 +13,7 @@ CREATE TABLE TYPE_USER(
 );
 
 INSERT INTO TYPE_USER VALUES(1, 'LF');
-INSERT INTO TYPE_USER VALUES(2, 'Cliente');
+INSERT INTO TYPE_USER VALUES(2, 'Customer');
 
 --Tabla de información del usuario para accesar a la aplicación
 CREATE TABLE USER(
