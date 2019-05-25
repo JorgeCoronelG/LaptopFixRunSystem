@@ -3,8 +3,8 @@
  * Created: 20/05/2019
  */
 
-CREATE DATABASE LFR;
-USE LFR;
+CREATE DATABASE laptopfixrun;
+USE laptopfixrun;
 
 --Tabla para los tipos de usuario
 CREATE TABLE TYPE_USER(
@@ -21,7 +21,7 @@ CREATE TABLE USER(
     password varchar(32),
     status int(1),
     idTypeUser int(1),
-    FOREIGN KEY(idTypeUser) REFERENCES TYPE_USER(idTypeUser)
+    FOREIGN KEY(idTypeUser) REFERENCES TYPE_USER(idTypeUser) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 INSERT INTO USER VALUES('laptopfix@gmail.com',md5('123456'),1,1);
@@ -32,7 +32,7 @@ CREATE TABLE CUSTOMER(
     nameCus varchar(150),
     numberCus varchar(10),
     email varchar(120),
-    FOREIGN KEY(email) REFERENCES USER(email)
+    FOREIGN KEY(email) REFERENCES USER(email) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 --Tabla para guardar las citas que agende el cliente

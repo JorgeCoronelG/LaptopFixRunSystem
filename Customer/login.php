@@ -13,7 +13,7 @@ require_once '../Model/customerDAO.php';
 
 $json = array();
 
-if(isset($_POST['email']) || isset($_POST['password'])){
+if(isset($_POST['email']) && isset($_POST['password'])){
     $user = new UserBEAN();
     $user->setEmail($_POST['email']);
     $user->setPassword(md5($_POST['password']));
@@ -25,9 +25,12 @@ if(isset($_POST['email']) || isset($_POST['password'])){
         if(!is_null($customer)){
             $json['code'] = 200;
             $json['customer']['id'] = $customer->getIdCus();
-            $json['customer']['name'] = $customer->getNameCus();
+            $json['customer']['name'] = utf8_encode($customer->getNameCus());
             $json['customer']['number'] = $customer->getNumberCus();
             $json['customer']['email'] = $customer->getEmail();
+        }else{
+            $json['code'] = 404;
+            $json['message'] = "Datos no encontrados";
         }
     }else{
         $json['code'] = 404;

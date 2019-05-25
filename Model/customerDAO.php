@@ -46,7 +46,7 @@ class CustomerDAO extends Connection {
     }
     
     public function getCustomerByEmail($email){
-        $query = "SELECT * FROM CUSTOMER WHERE email = '$email'";
+        $query = "SELECT * FROM CUSTOMER WHERE email = '".$email."'";
         $result = mysqli_query($this->connection, $query);
         if(mysqli_num_rows($result) == 0){
             return NULL;
