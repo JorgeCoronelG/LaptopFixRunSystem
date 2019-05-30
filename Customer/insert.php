@@ -17,7 +17,7 @@ if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name']) 
     $user = new UserBEAN();
     $user->setEmail($_POST['email']);
     $user->setPassword(md5($_POST['password']));
-    $user->setStatus(0);
+    $user->setStatus(1);
     $user->setIdTypeUser(2);//2 = Cliente
 
     $userDao = new UserDAO();
@@ -41,9 +41,10 @@ if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name']) 
                 $json['customer']['name'] = $customer->getNameCus();
                 $json['customer']['number'] = $customer->getNumberCus();
                 $json['customer']['email'] = $customer->getEmail();
+                $json['customer']['typeUser'] = $user->getIdTypeUser();
                 
-                $sendEmail = new sendEmail($customer->getEmail(), "Correo de verificación");
-                $sendEmail->sendEmail();
+                /*$sendEmail = new sendEmail($customer->getEmail(), "Correo de verificación");
+                $sendEmail->sendEmail();*/
             }else{
                 $json['code'] = 404;
                 $json['message'] = "Error. Vuelva a intentar más tarde";
@@ -64,7 +65,7 @@ if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name']) 
 echo json_encode($json);
 
 //Clase para enviar un email con un link para activar su cuenta
-class sendEmail{
+/*class sendEmail{
     
     private $to;
     private $subject;
@@ -110,6 +111,6 @@ class sendEmail{
         }
     }
     
-}
+}*/
 
 ?>
