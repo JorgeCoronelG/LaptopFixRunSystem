@@ -18,9 +18,20 @@ class CustomerDAO extends Connection {
                 . "'". utf8_decode($customer->getNameCus())."',"
                 . "'". $customer->getNumberCus()."',"
                 . "'". $customer->getEmail()."')";
-        
         if(mysqli_query($this->connection, $query) === TRUE){
             $customer->setIdCus(mysqli_insert_id($this->connection));
+            $this->closeConnection();
+            return $customer;
+        }else{
+            $this->closeConnection();
+            return FALSE;
+        }
+    }
+    
+    public function update($customer){
+        $query = "UPDATE CUSTOMER SET nameCus = '". utf8_decode($customer->getNameCus())."', numberCus = '".$customer->getNumberCus()."' "
+                . "WHERE idCus = ".$customer->getIdCus()."";
+        if(mysqli_query($this->connection, $query)){
             $this->closeConnection();
             return $customer;
         }else{
