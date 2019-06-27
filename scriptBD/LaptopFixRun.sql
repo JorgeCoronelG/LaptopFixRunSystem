@@ -1,5 +1,5 @@
 /**
- * Author:  tprog
+ * Author:  Jorge Coronel González
  * Created: 20/05/2019
  */
 
@@ -24,7 +24,7 @@ CREATE TABLE USER(
     FOREIGN KEY(idTypeUser) REFERENCES TYPE_USER(idTypeUser) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
-INSERT INTO USER VALUES('laptopfix@gmail.com',md5('123456'),1,1);
+INSERT INTO USER VALUES('contacto@laptopfix.com.mx ',md5('123456'),1,1);
 
 --Tabla del cliente para guardar su información
 CREATE TABLE CUSTOMER(
@@ -36,7 +36,7 @@ CREATE TABLE CUSTOMER(
 );
 
 --Tabla para guardar las citas que agende el cliente
-CREATE TABLE DATE_CUSTOMER(
+CREATE TABLE DATE_CUS(
     idDate int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     idCus int,
     dateCus date,
@@ -51,7 +51,7 @@ CREATE TABLE COMMENT(
     idComment int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     comment text,
     score int(1),
-    dateComment date,
+    dateComment datetime,
     idCus int,
     FOREIGN KEY(idCus) REFERENCES CUSTOMER(idCus)
 );

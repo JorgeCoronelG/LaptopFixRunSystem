@@ -40,7 +40,9 @@ if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name']) 
                 $json['customer']['id'] = $customer->getIdCus();
                 $json['customer']['name'] = $customer->getNameCus();
                 $json['customer']['number'] = $customer->getNumberCus();
-                $json['customer']['email'] = $customer->getEmail();
+                $json['customer']['email'] = $user->getEmail();
+                $json['customer']['password'] = $user->getPassword();
+                $json['customer']['status'] = $user->getStatus();
                 $json['customer']['typeUser'] = $user->getIdTypeUser();
                 
                 /*$sendEmail = new sendEmail($customer->getEmail(), "Correo de verificación");
