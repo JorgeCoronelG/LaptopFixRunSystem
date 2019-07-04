@@ -17,8 +17,8 @@ class DateDAO extends Connection {
                 . "".$date->getIdCus().","
                 . "'".$date->getDateCus()."',"
                 . "'".$date->getHourCus()."',"
-                . "'".$date->getResidenceCus()."',"
-                . "'".$date->getDescProblem()."')";
+                . "'". utf8_decode($date->getResidenceCus())."',"
+                . "'". utf8_decode($date->getDescProblem())."')";
         if(mysqli_query($this->connection, $query) === TRUE){
             $this->closeConnection();
             return $date;
@@ -38,9 +38,47 @@ class DateDAO extends Connection {
         }
     }
     
-    public function getDates(){
-        $query = "SELECT * FROM DATE_CUS WHERE idDate IN (SELECT idDate FROM DATE_CUS WHERE dateCus = curdate() AND hourCus >= curtime()) "
-                . "OR idDate IN (SELECT idDate FROM DATE_CUS WHERE dateCus = curdate() + 1)";
+    public function getDate($id){
+        $query = "SELECT idDate, DATE_FORMAT(dateCus, '%d-%m-%Y') AS date, TIME_FORMAT(hourCus, '%h %i %p') AS hour, "
+                . "residenceCus, descProblem, nameCus FROM DATE_CUS d INNER JOIN CUSTOMER c ON d.idCus = c.idCus "
+                . "WHERE idDate = $id";
+        $result = mysqli_query($this->connection, $query);
+        if(mysqli_num_rows($result) == 0){
+            $this->closeConnection();
+            return FALSE;
+        }else{
+            $this->closeConnection();
+            $dataDate = mysqli_fetch_array($result);
+            $date = new DateBEAN();
+            $date->setIdDate($dataDate['idDate']);
+            $date->setIdCus($dataDate['nameCus']);
+            $date->setDateCus($dataDate['date']);
+            $date->setHourCus($dataDate['hour']);
+            $date->setResidenceCus($dataDate['residenceCus']);
+            $date->setDescProblem($dataDate['descProblem']);
+            return $date;
+        }
+    }
+    
+    public function getDatesLaptopFix(){
+        $query = "SELECT idDate, nameCus, DATE_FORMAT(dateCus, '%d-%m-%Y') AS date, TIME_FORMAT(hourCus, '%h %i %p') AS hour, residenceCus "
+                . "FROM DATE_CUS d INNER JOIN CUSTOMER c ON d.idCus = c.idCus "
+                . "WHERE idDate IN (SELECT idDate FROM DATE_CUS WHERE dateCus = curdate() AND hourCus >= curtime()) OR "
+                . "idDate IN (SELECT idDate FROM DATE_CUS WHERE dateCus = curdate() + 1) ORDER BY date, hour";
+        $result = mysqli_query($this->connection, $query);
+        if(mysqli_num_rows($result) == 0){
+            $this->closeConnection();
+            return FALSE;
+        }else{
+            $this->closeConnection();
+            return $result;
+        }
+    }
+    
+    public function getDatesCustomer($id){
+        $query = "SELECT DATE_FORMAT(dateCus, '%d-%m-%Y') AS date, TIME_FORMAT(hourCus, '%h %i %p') AS hour, descProblem, residenceCus "
+                . "FROM DATE_CUS WHERE idDate IN (SELECT idDate FROM DATE_CUS WHERE dateCus >= curdate()) AND idCUs = $id "
+                . "ORDER BY date, hour";
         $result = mysqli_query($this->connection, $query);
         if(mysqli_num_rows($result) == 0){
             $this->closeConnection();

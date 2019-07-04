@@ -29,7 +29,7 @@ if($result != FALSE){
     $json['comments'] = $arrComments;
 }else{
     $json['code'] = 404;
-    $json['message'] = "No hay comentarios";
+    $json['message'] = "No hay comentarios disponibles";
 }
 
 echo json_encode($json);

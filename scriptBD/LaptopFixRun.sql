@@ -24,7 +24,7 @@ CREATE TABLE USER(
     FOREIGN KEY(idTypeUser) REFERENCES TYPE_USER(idTypeUser) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
-INSERT INTO USER VALUES('contacto@laptopfix.com.mx ',md5('123456'),1,1);
+INSERT INTO USER VALUES('contacto@laptopfix.com.mx',md5('123456'),1,1);
 
 --Tabla del cliente para guardar su información
 CREATE TABLE CUSTOMER(
