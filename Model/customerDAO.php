@@ -14,12 +14,11 @@ class CustomerDAO extends Connection {
     }
     
     public function insert($customer){
-        $query = "INSERT INTO CUSTOMER VALUES (null,"
+        $query = "INSERT INTO CUSTOMER VALUES ('".$customer->getIdCus()."',"
                 . "'". utf8_decode($customer->getNameCus())."',"
                 . "'". $customer->getNumberCus()."',"
                 . "'". $customer->getEmail()."')";
         if(mysqli_query($this->connection, $query) === TRUE){
-            $customer->setIdCus(mysqli_insert_id($this->connection));
             $this->closeConnection();
             return $customer;
         }else{
@@ -30,7 +29,7 @@ class CustomerDAO extends Connection {
     
     public function update($customer){
         $query = "UPDATE CUSTOMER SET nameCus = '". utf8_decode($customer->getNameCus())."', numberCus = '".$customer->getNumberCus()."' "
-                . "WHERE idCus = ".$customer->getIdCus()."";
+                . "WHERE idCus = '".$customer->getIdCus()."'";
         if(mysqli_query($this->connection, $query)){
             $this->closeConnection();
             return $customer;
@@ -41,7 +40,7 @@ class CustomerDAO extends Connection {
     }
     
     public function getCustomer($id){
-        $query = "SELECT * FROM CUSTOMER WHERE idCus = $id";
+        $query = "SELECT * FROM CUSTOMER WHERE idCus = '$id'";
         $result = mysqli_query($this->connection, $query);
         if(mysqli_num_rows($result) == 0){
             return NULL;

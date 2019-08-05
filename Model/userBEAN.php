@@ -43,7 +43,5 @@ class UserBEAN {
     function setIdTypeUser($idTypeUser) {
         $this->idTypeUser = $idTypeUser;
     }
-
-
     
 }

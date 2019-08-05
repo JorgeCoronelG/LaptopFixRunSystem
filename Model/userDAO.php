@@ -29,6 +29,17 @@ class UserDAO extends Connection{
         }
     }
     
+    public function changePassword($user){
+        $query = "UPDATE USER SET password = '".$user->getPassword()."' WHERE email = '".$user->getEmail()."'";
+        if(mysqli_query($this->connection, $query) === TRUE){
+            $this->closeConnection();
+            return TRUE;
+        }else{
+            $this->closeConnection();
+            return FALSE;
+        }
+    }
+    
     public function login($user){
         $query = "SELECT * FROM USER WHERE email = '".$user->getEmail()."' AND password = '".$user->getPassword()."'";
         $result = mysqli_query($this->connection, $query);

@@ -13,7 +13,8 @@ require_once '../Model/customerDAO.php';
 
 $json = array();
 
-if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name']) && isset($_POST['number'])){
+if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['id']) 
+        && isset($_POST['name']) && isset($_POST['number'])){
     $user = new UserBEAN();
     $user->setEmail($_POST['email']);
     $user->setPassword(md5($_POST['password']));
@@ -28,6 +29,7 @@ if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name']) 
 
         if($user != FALSE){
             $customer = new CustomerBEAN();
+            $customer->setIdCus($_POST['id']);
             $customer->setEmail($user->getEmail());
             $customer->setNameCus($_POST['name']);
             $customer->setNumberCus($_POST['number']);

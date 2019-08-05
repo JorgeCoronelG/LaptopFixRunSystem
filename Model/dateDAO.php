@@ -31,7 +31,7 @@ class DateDAO extends Connection {
     public function checkHourDates($date, $hour){
         $query = "SELECT * FROM DATE_CUS WHERE dateCus = '$date' AND hourCus = '$hour'";
         $result = mysqli_query($this->connection, $query);
-        if(mysqli_num_rows($result) == 0){
+        if(mysqli_num_rows($result) < 10){
             return FALSE;
         }else{
             return TRUE;
