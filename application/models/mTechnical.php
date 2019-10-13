@@ -7,7 +7,7 @@ class mTechnical extends CI_Model{
         parent::__construct();
     }
 
-    public function insertar($param){
+    public function insert($param){
         $campos = array(
             'idTech' => $param['id'],
             'nameTech' => $param['nombre'],
@@ -36,5 +36,13 @@ class mTechnical extends CI_Model{
         $result = $this->db->get();
         return $result->row();
     }
-
+    
+    public function getAll(){
+        $this->db->select('*');
+        $this->db->from('TECHNICAL');
+        $this->db->order_by('nameTech', 'ASC');
+        $result = $this->db->get();
+        return $result->result();
+    }
+    
 }

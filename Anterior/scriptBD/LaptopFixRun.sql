@@ -31,7 +31,7 @@ CREATE TABLE TECHNICAL(
     idTech VARCHAR(50) NOT NULL PRIMARY KEY,
     nameTech VARCHAR(150),
     addTech VARCHAR(256),
-    telTech VARCHAR(10),
+    phoneTech VARCHAR(10),
     email VARCHAR(120),
     ifeTech text,
     comAddTech text,
@@ -39,7 +39,7 @@ CREATE TABLE TECHNICAL(
 );
 
 CREATE TABLE PAYMENT(
-    idTech VARCHAR(50)
+    idTech VARCHAR(50),
     payment DEC(10,2),
     FOREIGN KEY(idTech) REFERENCES TECHNICAL(idTech)
 );

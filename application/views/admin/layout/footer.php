@@ -45,13 +45,21 @@ reserved.
 <script src="<?=base_url();?>assets/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?=base_url();?>assets/dist/js/demo.js"></script>
+<!-- JS Datatable -->
+<script src="<?=base_url();?>assets/dist/js/datatables.min.js"></script>
+
+<!--URL-->
+<script type="text/javascript">
+    var base_url = "<?=base_url();?>";
+</script>
+
 <!--JS para insertar un técnico-->
 <?php if($this->uri->segment(2) == 'agregarTecnico'): ?>
-<script src="<?=base_url();?>assets/js/insertTechnical.js"></script>
+<script src="<?=base_url();?>assets/js/technical/insert.js"></script>
 <?php endif; ?>
-<!--URL-->
-<script>
-  var base_url = "<?=base_url();?>";
-</script>
+<?php if($this->uri->segment(2) == 'gestionarTecnicos'): ?>
+<script src="<?=base_url();?>assets/js/technical/managment.js"></script>
+<?php endif; ?>
+
 </body>
 </html>

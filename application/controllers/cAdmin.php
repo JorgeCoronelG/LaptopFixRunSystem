@@ -10,7 +10,7 @@ class cAdmin extends CI_Controller {
         }
     }
 
-	public function index(){
+    public function index(){
         $data['title'] = 'Admin | Inicio';
         $this->load->view('admin/layout/header', $data);
         $this->load->view('admin/layout/menu');
@@ -22,6 +22,14 @@ class cAdmin extends CI_Controller {
         $this->load->view('admin/layout/header', $data);
         $this->load->view('admin/layout/menu');
         $this->load->view('admin/technical/vInsert');
+        $this->load->view('admin/layout/footer');
+    }
+    
+    public function gestionarTecnicos(){
+        $data['title'] = 'Gestionar técnicos';
+        $this->load->view('admin/layout/header', $data);
+        $this->load->view('admin/layout/menu');
+        $this->load->view('admin/technical/vManagment');
         $this->load->view('admin/layout/footer');
     }
     
