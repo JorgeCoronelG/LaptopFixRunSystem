@@ -17,6 +17,15 @@ class mUser extends CI_Model{
         $this->db->insert('USER', $campos);
         return TRUE;
     }
+    
+    public function changeStatus($param){
+        $campos = array(
+            'status' => $param['status']
+        );
+        $this->db->where('email', $param['email']);
+        $this->db->update('USER', $campos);
+        return TRUE;
+    }
 
     public function login($param){
         $this->db->select('*');

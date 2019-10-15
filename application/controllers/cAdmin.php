@@ -33,6 +33,14 @@ class cAdmin extends CI_Controller {
         $this->load->view('admin/layout/footer');
     }
     
+    public function abonosTecnicos(){
+        $data['title'] = 'Abonos técnicos';
+        $this->load->view('admin/layout/header', $data);
+        $this->load->view('admin/layout/menu');
+        $this->load->view('admin/technical/vPayment');
+        $this->load->view('admin/layout/footer');
+    }
+    
     public function logout(){
         $this->session->sess_destroy();
         redirect(base_url());

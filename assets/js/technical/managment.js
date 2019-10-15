@@ -36,7 +36,17 @@ $('#tabla-tecnicos').DataTable({
         {data: 'addTech'},
         {'orderable': true,
             render: function(data, type, row){
-                return '<button class="btn btn-success" data-toggle="modal" data-target="#" onClick=""><i class="fa fa-money"></i></button> '+
+                return '<a href="'+base_url+path_doc+row.ifeTech+'" target="_blank">IFE/INE</a>';
+            }
+        },
+        {'orderable': true,
+            render: function(data, type, row){
+                return '<a href="'+base_url+path_doc+row.compAddTech+'" target="_blank">Comprobante</a>';
+            }
+        },
+        {'orderable': true,
+            render: function(data, type, row){
+                return ''+
                 '<button class="btn btn-primary" data-toggle="modal" data-target="#updateModal" onClick=""><i class="fa fa-edit"></i></button> '+
                 '<button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onClick=""><i class="fa fa-trash"></i></button>';
             }

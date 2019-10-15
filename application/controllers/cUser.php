@@ -64,4 +64,12 @@ class cUser extends CI_Controller {
         echo json_encode($json);
     }
     
+    public function changeStatus(){
+        $param = array();
+        $param['status'] = $this->input->post('status');
+        $param['email'] = $this->input->post('email');
+        $this->mUser->changeStatus($param);
+        echo TRUE;
+    }
+    
 }

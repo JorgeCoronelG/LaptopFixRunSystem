@@ -10,7 +10,7 @@ class cPayment extends CI_Controller {
     
     public function update(){
         $param = array();
-        $param['id'] = $this->input->post('idTech');
+        $param['id'] = $this->input->post('id');
         $param['payment'] = $this->input->post('payment');
         $this->mPayment->update($param);
         echo TRUE;

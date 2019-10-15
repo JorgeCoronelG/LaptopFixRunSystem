@@ -38,8 +38,9 @@ class mTechnical extends CI_Model{
     }
     
     public function getAll(){
-        $this->db->select('*');
-        $this->db->from('TECHNICAL');
+        $this->db->select('t.*, p.payment');
+        $this->db->from('TECHNICAL t');
+        $this->db->join('PAYMENT p', 't.idTech = p.idTech');
         $this->db->order_by('nameTech', 'ASC');
         $result = $this->db->get();
         return $result->result();

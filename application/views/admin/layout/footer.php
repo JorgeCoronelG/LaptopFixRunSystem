@@ -60,6 +60,9 @@ reserved.
 <?php if($this->uri->segment(2) == 'gestionarTecnicos'): ?>
 <script src="<?=base_url();?>assets/js/technical/managment.js"></script>
 <?php endif; ?>
+<?php if($this->uri->segment(2) == 'abonosTecnicos'): ?>
+<script src="<?=base_url();?>assets/js/technical/payment.js"></script>
+<?php endif; ?>
 
 </body>
 </html>
