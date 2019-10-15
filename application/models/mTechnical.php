@@ -41,6 +41,8 @@ class mTechnical extends CI_Model{
         $this->db->select('t.*, p.payment');
         $this->db->from('TECHNICAL t');
         $this->db->join('PAYMENT p', 't.idTech = p.idTech');
+        $this->db->join('USER u', 't.email = u.email');
+        $this->db->where('status', 1);
         $this->db->order_by('nameTech', 'ASC');
         $result = $this->db->get();
         return $result->result();

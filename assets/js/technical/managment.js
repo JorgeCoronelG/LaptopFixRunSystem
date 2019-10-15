@@ -48,7 +48,7 @@ $('#tabla-tecnicos').DataTable({
             render: function(data, type, row){
                 return ''+
                 '<button class="btn btn-primary" data-toggle="modal" data-target="#updateModal" onClick=""><i class="fa fa-edit"></i></button> '+
-                '<button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onClick=""><i class="fa fa-trash"></i></button>';
+                '<button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onClick="del(\''+row.email+'\');"><i class="fa fa-trash"></i></button>';
             }
         }
     ],
@@ -59,3 +59,22 @@ $('#tabla-tecnicos').DataTable({
         }
     ]
 });
+
+function del(email){
+    $.ajax({
+        url: base_url+'cUser/changeStatus',
+        type: 'POST',
+        dataType: 'json',
+        data: { email : email, status : 0},
+        success: function(data){
+            if(data == true){
+                location.reload();
+            }
+        },
+        error: function(a, b, c){
+            console.log(a);
+            console.log(b);
+            console.log(c);
+        }
+    });
+}
