@@ -21,6 +21,35 @@ class mTechnical extends CI_Model{
         return TRUE;
     }
     
+    public function update($param){
+        $campos = array(
+            'nameTech' => $param['nombre'],
+            'addTech' => $param['domicilio'],
+            'phoneTech' => $param['telefono']
+        );
+        $this->db->where('idTech', $param['id']);
+        $this->db->update('TECHNICAL', $campos);
+        return TRUE;
+    }
+    
+    public function updateINE($param){
+        $campos = array(
+            'ifeTech' => $param['credencial']
+        );
+        $this->db->where('idTech', $param['id']);
+        $this->db->update('TECHNICAL', $campos);
+        return TRUE;
+    }
+    
+    public function updateCompAdd($param){
+        $campos = array(
+            'comAddTech' => $param['compDomicilio']
+        );
+        $this->db->where('idTech', $param['id']);
+        $this->db->update('TECHNICAL', $campos);
+        return TRUE;
+    }
+    
     public function getTechnical($id){
         $this->db->select('*');
         $this->db->from('TECHNICAL');

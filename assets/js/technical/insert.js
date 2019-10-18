@@ -13,7 +13,7 @@ $('#form').submit(function(e){
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
         var user = firebase.auth().currentUser;
-        writeUserData(user.uid, name, phone, email);
+        writeUserData(user.uid, name, phone);
         data.append('id', user.uid);
         $.ajax({
           url: base_url+'cTechnical/agregar',
@@ -52,11 +52,10 @@ $('#btn-success').click(function(){
     location.reload();
 });
 
-function writeUserData(id, name, phone, email) {
+function writeUserData(id, name, phone) {
   firebase.database().ref('Technical/' + id).set({
     id: id,
     name: name,
-    email: email,
     phone: phone
   }, function(error){
     if(error){

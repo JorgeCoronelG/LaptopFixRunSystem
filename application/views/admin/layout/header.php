@@ -23,10 +23,8 @@
   <link rel="stylesheet" href="<?=base_url();?>assets/dist/css/datatables.min.css">
   <!-- Loader -->
   <link rel="stylesheet" href="<?=base_url();?>assets/dist/css/loader.css">
-  <?php if($this->uri->segment(2) == 'agregarTecnico'): ?>
-    <!-- CSS para botones tipo file-->
-    <link rel="stylesheet" href="<?=base_url();?>assets/bower_components/styles/btn-files.css">
-  <?php endif; ?>
+<!-- CSS para botones tipo file-->
+<link rel="stylesheet" href="<?=base_url();?>assets/bower_components/styles/btn-files.css">
   <!--Firebase-->
   <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
   <!-- Add additional services that you want to use -->

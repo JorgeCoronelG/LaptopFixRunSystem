@@ -52,6 +52,54 @@ class cTechnical extends CI_Controller{
         echo json_encode($json);
     }
     
+    public function actualizar(){
+        $param = array();
+        $param['id'] = $this->input->post('idTech');
+        $param['nombre'] = $this->input->post('txtName');
+        $param['domicilio'] = $this->input->post('txtAddress');
+        $param['telefono'] = $this->input->post('txtPhone');
+        $this->mTechnical->update($param);
+        echo TRUE;
+    }
+    
+    public function actualizarINE(){
+        $json = array();
+        $param = array();
+        $param['id'] = $this->input->post('idTechINE');
+        $tecnico = $this->mTechnical->getTechnical($param['id']);
+        unlink('./uploads/documentos/'.$tecnico->ifeTech);
+        $this->configurarRuta();
+        if($this->upload->do_upload('credential')){
+            $file_info_c = $this->upload->data();
+            $param['credencial'] = $file_info_c['file_name'];
+            $this->mTechnical->updateINE($param);
+            $json['code'] = 200;
+        }else{
+            $json['code'] = 404;
+            $json['error'] = "Error al cargar el documento";
+        }
+        echo json_encode($json);
+    }
+
+    public function actualizarCompDom(){
+        $json = array();
+        $param = array();
+        $param['id'] = $this->input->post('idTechAdd');
+        $tecnico = $this->mTechnical->getTechnical($param['id']);
+        unlink('./uploads/documentos/'.$tecnico->comAddTech);
+        $this->configurarRuta();
+        if($this->upload->do_upload('address')){
+            $file_info_c = $this->upload->data();
+            $param['compDomicilio'] = $file_info_c['file_name'];
+            $this->mTechnical->updateCompAdd($param);
+            $json['code'] = 200;
+        }else{
+            $json['code'] = 404;
+            $json['error'] = "Error al cargar el documento";
+        }
+        echo json_encode($json);
+    }
+    
     public function obtenerTecnicos(){
         echo json_encode($this->mTechnical->getAll());
     }

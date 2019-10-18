@@ -12,7 +12,7 @@
             </span>
             </a>
             <ul class="treeview-menu">
-            <li class="active"><a href="<?=base_url();?>cAdmin/agregarTecnico"><i class="fa fa-circle-o"></i> Añadir</a></li>
+            <li><a href="<?=base_url();?>cAdmin/agregarTecnico"><i class="fa fa-circle-o"></i> Añadir</a></li>
             <li><a href="<?=base_url();?>cAdmin/gestionarTecnicos"><i class="fa fa-circle-o"></i> Gestionar</a></li>
             <li><a href="<?=base_url();?>cAdmin/abonosTecnicos"><i class="fa fa-circle-o"></i> Abonos</a></a></li>
             </ul>
