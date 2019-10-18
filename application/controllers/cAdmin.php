@@ -18,26 +18,26 @@ class cAdmin extends CI_Controller {
     }
 
     public function agregarTecnico(){
-        $data['title'] = 'Agregar Técnico';
-        $this->load->view('admin/layout/header', $data);
-        $this->load->view('admin/layout/menu');
-        $this->load->view('admin/technical/vInsert');
-        $this->load->view('admin/layout/footer');
+        $this->loadView('Agregar Técnico', 'admin/technical/vInsert');
     }
     
     public function gestionarTecnicos(){
-        $data['title'] = 'Gestionar técnicos';
-        $this->load->view('admin/layout/header', $data);
-        $this->load->view('admin/layout/menu');
-        $this->load->view('admin/technical/vManagment');
-        $this->load->view('admin/layout/footer');
+        $this->loadView('Gestionar Técnico', 'admin/technical/vManagment');
     }
     
     public function abonosTecnicos(){
-        $data['title'] = 'Abonos técnicos';
+        $this->loadView('Abonos Técnicos', 'admin/technical/vPayment');
+    }
+    
+    public function gestionarServicioBase(){
+        $this->loadView('Servicio base', 'admin/baseService/vManagment');
+    }
+    
+    public function loadView($title, $file){
+        $data['title'] = $title;
         $this->load->view('admin/layout/header', $data);
         $this->load->view('admin/layout/menu');
-        $this->load->view('admin/technical/vPayment');
+        $this->load->view($file);
         $this->load->view('admin/layout/footer');
     }
     

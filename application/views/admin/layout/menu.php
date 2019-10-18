@@ -15,9 +15,23 @@
             <li><a href="<?=base_url();?>cAdmin/agregarTecnico"><i class="fa fa-circle-o"></i> Añadir</a></li>
             <li><a href="<?=base_url();?>cAdmin/gestionarTecnicos"><i class="fa fa-circle-o"></i> Gestionar</a></li>
             <li><a href="<?=base_url();?>cAdmin/abonosTecnicos"><i class="fa fa-circle-o"></i> Abonos</a></a></li>
+            <li><a href="<?=base_url();?>cAdmin/gestionarComision"><i class="fa fa-circle-o"></i> Comisión</a></a></li>
+            </ul>
+        </li>
+        
+        <li class="treeview">
+            <a href="#">
+            <i class="fa fa-money"></i> <span>Servicio base</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+            <li><a href="<?=base_url();?>cAdmin/gestionarServicioBase"><i class="fa fa-circle-o"></i> Gestionar</a></li>
             </ul>
         </li>
         </ul>
+        
     </section>
     <!-- /.sidebar -->
 </aside>

@@ -53,7 +53,7 @@ reserved.
     var base_url = "<?=base_url();?>";
 </script>
 
-<!--JS para insertar un técnico-->
+<!--JS Técnico-->
 <?php if($this->uri->segment(2) == 'agregarTecnico'): ?>
 <script src="<?=base_url();?>assets/js/technical/insert.js"></script>
 <?php endif; ?>
@@ -62,6 +62,11 @@ reserved.
 <?php endif; ?>
 <?php if($this->uri->segment(2) == 'abonosTecnicos'): ?>
 <script src="<?=base_url();?>assets/js/technical/payment.js"></script>
+<?php endif; ?>
+
+<!--JS Servicio Base-->
+<?php if($this->uri->segment(2) == 'gestionarServicioBase'): ?>
+<script src="<?=base_url();?>assets/js/baseService/managment.js"></script>
 <?php endif; ?>
 
 </body>

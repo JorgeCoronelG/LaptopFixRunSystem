@@ -1,4 +1,4 @@
-$('#tabla-abonos').DataTable({
+$('#tabla-servicio-base').DataTable({
     language: {
         "decimal": "",
         "emptyTable": "No hay información",
@@ -7,7 +7,7 @@ $('#tabla-abonos').DataTable({
         "infoFiltered": "(Filtrado de _MAX_ total entradas)",
         "infoPostFix": "",
         "thousands": ",",
-        "lengthMenu": "Mostrar _MENU_ Pagos",
+        "lengthMenu": "Mostrar _MENU_ Servicio base",
         "loadingRecords": "Cargando...",
         "processing": "Procesando...",
         "search": "Buscar:",
@@ -25,15 +25,14 @@ $('#tabla-abonos').DataTable({
     'filter': false,
     'stateSave': true,
     'ajax':{
-        "url": base_url+"cTechnical/obtenerTecnicos",
+        "url": base_url+"cBaseService/obtener",
         "type": "POST",
         dataSrc: ''
     },
     'columns':[
-        {data: 'nameTech'},
         {'orderable': true,
             render: function(data, type, row){
-                return '$'+row.payment;
+                return '$'+row.baseService;
             }
         },
         {'orderable': true,
@@ -43,7 +42,7 @@ $('#tabla-abonos').DataTable({
         },
         {'orderable': true,
             render: function(data, type, row){
-                return '<button class="btn btn-success" onclick="payment(\''+row.idTech+'\');"><i class="fa fa-money"></i></button>';
+                return '<button class="btn btn-success" onclick="update();"><i class="fa fa-money"></i></button>';
             }
         }
     ],
@@ -55,13 +54,13 @@ $('#tabla-abonos').DataTable({
     ]
 });
 
-function payment(id){
+function update(){
     var payment = $('#payment').val();
     $.ajax({
-        url: base_url+'cPayment/update',
+        url: base_url+'cBaseService/actualizar',
         type: 'POST',
         dataType: 'json',
-        data: { id : id, payment : payment},
+        data: {payment : payment},
         success: function(data){
             if(data == true){
                 location.reload();
