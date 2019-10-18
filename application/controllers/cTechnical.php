@@ -8,6 +8,7 @@ class cTechnical extends CI_Controller{
         $this->load->model('mTechnical');
         $this->load->model('mUser');
         $this->load->model('mPayment');
+        $this->load->model('mCommission');
     }
 
     public function agregar(){
@@ -38,6 +39,10 @@ class cTechnical extends CI_Controller{
                 //Insertar en la tabla de abono
                 $param['payment'] = 0;
                 $this->mPayment->insert($param);
+                //Insertar en la tabla de comisión - Por default es el 20%
+                $param['comision'] = 20;
+                $this->mCommission->insert($param);
+                
                 $json['code'] = 200;
             }else{
                 $json['code'] = 404;

@@ -63,6 +63,9 @@ reserved.
 <?php if($this->uri->segment(2) == 'abonosTecnicos'): ?>
 <script src="<?=base_url();?>assets/js/technical/payment.js"></script>
 <?php endif; ?>
+<?php if($this->uri->segment(2) == 'gestionarComision'): ?>
+<script src="<?=base_url();?>assets/js/technical/commission.js"></script>
+<?php endif; ?>
 
 <!--JS Servicio Base-->
 <?php if($this->uri->segment(2) == 'gestionarServicioBase'): ?>

@@ -6,6 +6,9 @@ class cIndex extends CI_Controller {
     function __construct(){
         parent::__construct();
         $this->load->model('mUser');
+        if($this->session->userdata('user')){
+            redirect(base_url().'cAdmin');
+        }
     }
 
     public function index(){

@@ -33,6 +33,10 @@ class cAdmin extends CI_Controller {
         $this->loadView('Servicio base', 'admin/baseService/vManagment');
     }
     
+    public function gestionarComision(){
+        $this->loadView('Comisión técnicos', 'admin/technical/vCommission');
+    }
+    
     public function loadView($title, $file){
         $data['title'] = $title;
         $this->load->view('admin/layout/header', $data);

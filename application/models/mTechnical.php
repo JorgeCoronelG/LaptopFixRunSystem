@@ -67,9 +67,10 @@ class mTechnical extends CI_Model{
     }
     
     public function getAll(){
-        $this->db->select('t.*, p.payment');
+        $this->db->select('t.*, p.payment, c.commission');
         $this->db->from('TECHNICAL t');
         $this->db->join('PAYMENT p', 't.idTech = p.idTech');
+        $this->db->join('COMMISSION c', 't.idTech = c.idTech');
         $this->db->join('USER u', 't.email = u.email');
         $this->db->where('status', 1);
         $this->db->order_by('nameTech', 'ASC');

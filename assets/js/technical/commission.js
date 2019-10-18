@@ -1,4 +1,4 @@
-$('#tabla-abonos').DataTable({
+$('#tabla-comision').DataTable({
     language: {
         "decimal": "",
         "emptyTable": "No hay información",
@@ -33,17 +33,17 @@ $('#tabla-abonos').DataTable({
         {data: 'nameTech'},
         {'orderable': true,
             render: function(data, type, row){
-                return '$'+row.payment;
+                return row.commission+' %';
             }
         },
         {'orderable': true,
             render: function(data,type,row){
-                return '<input type="number" class="form-control" value="0" id="payment" name="payment"/>';
+                return '<input type="number" class="form-control" value="0" id="commission" name="commission"/>';
             }
         },
         {'orderable': true,
             render: function(data, type, row){
-                return '<button class="btn btn-success" onclick="payment(\''+row.idTech+'\');"><i class="fa fa-money"></i></button>';
+                return '<button class="btn btn-success" onclick="commission(\''+row.idTech+'\');"><i class="fa fa-percent"></i></button>';
             }
         }
     ],
@@ -55,13 +55,13 @@ $('#tabla-abonos').DataTable({
     ]
 });
 
-function payment(id){
-    var payment = $('#payment').val();
+function commission(id){
+    var commission = $('#commission').val();
     $.ajax({
-        url: base_url+'cPayment/update',
+        url: base_url+'cCommission/update',
         type: 'POST',
         dataType: 'json',
-        data: { id : id, payment : payment},
+        data: { id : id, commission : commission},
         success: function(data){
             if(data == true){
                 location.reload();
