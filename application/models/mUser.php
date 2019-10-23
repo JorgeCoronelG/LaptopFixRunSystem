@@ -45,6 +45,15 @@ class mUser extends CI_Model{
         return TRUE;
     }
     
+    public function changeEmail($param){
+        $campo = array(
+            'email' => $param['correoN']
+        );
+        $this->db->where('email', $param['correoV']);
+        $this->db->update('USER', $campo);
+        return TRUE;
+    }
+    
     public function existEmail($email){
         $this->db->select('*');
         $this->db->from('USER');

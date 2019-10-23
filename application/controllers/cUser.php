@@ -39,7 +39,7 @@ class cUser extends CI_Controller {
                         }
                         break;
                     case 3:
-                        $technical = $this->mTechnical()->getTechnicalByEmail($user->email);
+                        $technical = $this->mTechnical->getTechnicalByEmail($user->email);
                         if($technical != null){
                             $json['code'] = 3;
                             $json['user']['id'] = $technical->idTech;
@@ -64,11 +64,22 @@ class cUser extends CI_Controller {
         echo json_encode($json);
     }
     
+    public function changeEmail(){
+        $json = array();
+        $param = array();
+        $param['correoN'] = $this->input->post('emailN');
+        $param['correoV'] = $this->input->post('emailV');
+        $this->mUser->changeEmail($param);
+        $json['email'] = $param['correoN'];
+        $json['code'] = 13;
+        echo json_encode($json);
+    }
+    
     public function changePassword(){
         $json = array();
         $param = array();
         $param['email'] = $this->input->post('email');
-        $param['password'] = $this->input->post('password');
+        $param['password'] = md5($this->input->post('password'));
         $this->mUser->changePassword($param);
         $json['code'] = 4;
         echo json_encode($json);
