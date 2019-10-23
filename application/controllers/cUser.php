@@ -20,17 +20,17 @@ class cUser extends CI_Controller {
             if($user->status == 1){
                 switch($user->idTypeUser){
                     case 1:
-                        $json['code'] = 200;
+                        $json['code'] = 1;
                         $json['user']['email'] = $user->email;
                         $json['user']['typeUser'] = $user->idTypeUser;
                         break;
                     case 2:
                         $customer = $this->mCustomer->getCustomerByEmail($user->email);
                         if($customer != null){
-                            $json['code'] = 200;
+                            $json['code'] = 2;
                             $json['user']['id'] = $customer->idCus;
                             $json['user']['name'] = $customer->nameCus;
-                            $json['user']['number'] = $customer->phoneCus;
+                            $json['user']['phone'] = $customer->phoneCus;
                             $json['user']['email'] = $user->email;
                             $json['user']['typeUser'] = $user->idTypeUser;
                         }else{
@@ -41,7 +41,7 @@ class cUser extends CI_Controller {
                     case 3:
                         $technical = $this->mTechnical()->getTechnicalByEmail($user->email);
                         if($technical != null){
-                            $json['code'] = 200;
+                            $json['code'] = 3;
                             $json['user']['id'] = $technical->idTech;
                             $json['user']['name'] = $technical->nameTech;
                             $json['user']['number'] = $technical->phoneTech;
@@ -61,6 +61,16 @@ class cUser extends CI_Controller {
             $json['code'] = 404;
             $json['message'] = "Correo y/o contraseña incorrectos";
         }
+        echo json_encode($json);
+    }
+    
+    public function changePassword(){
+        $json = array();
+        $param = array();
+        $param['email'] = $this->input->post('email');
+        $param['password'] = $this->input->post('password');
+        $this->mUser->changePassword($param);
+        $json['code'] = 4;
         echo json_encode($json);
     }
     

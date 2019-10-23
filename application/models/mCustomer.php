@@ -9,10 +9,10 @@ class mCustomer extends CI_Model {
     
     public function insert($param){
         $campos = array(
-            'idCus' => $param['email'],
+            'idCus' => $param['id'],
             'nameCus' => $param['nombre'],
             'phoneCus' => $param['telefono'],
-            'email' => $param['email']
+            'email' => $param['correo']
         );
         $this->db->insert('CUSTOMER', $campos);
         return TRUE;

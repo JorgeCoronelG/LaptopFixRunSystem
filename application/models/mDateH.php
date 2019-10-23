@@ -9,16 +9,16 @@ class mDateH extends CI_Model{
     
     public function insert($param){
         $campos = array(
-            'idCus' => $param['customer'],
+            'idCus' => $param['cliente'],
             'date' => $param['fecha'],
             'hour' => $param['hora'],
             'address' => $param['domicilio'],
             'descProblem' => $param['problema'],
-            'service' => $param['service'],
-            'status' => $param['estatus']
+            'service' => $param['servicio'],
+            'status' => 0
         );
         $this->db->insert('DATE_H', $campos);
-        return TRUE;
+        return $this->db->insert_id();
     }
     
 }

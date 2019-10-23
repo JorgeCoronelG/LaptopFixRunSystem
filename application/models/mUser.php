@@ -37,11 +37,11 @@ class mUser extends CI_Model{
     }
     
     public function changePassword($param){
-        $campos = array(
+        $campo = array(
             'password' => $param['password']
         );
         $this->db->where('email', $param['email']);
-        $this->db->update('USER', $campos);
+        $this->db->update('USER', $campo);
         return TRUE;
     }
     
