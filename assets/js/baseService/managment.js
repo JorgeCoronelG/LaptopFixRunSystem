@@ -25,7 +25,7 @@ $('#tabla-servicio-base').DataTable({
     'filter': false,
     'stateSave': true,
     'ajax':{
-        "url": base_url+"cBaseService/obtener",
+        "url": base_url+"BaseService/obtener",
         "type": "POST",
         dataSrc: ''
     },
@@ -57,7 +57,7 @@ $('#tabla-servicio-base').DataTable({
 function update(){
     var payment = $('#payment').val();
     $.ajax({
-        url: base_url+'cBaseService/actualizar',
+        url: base_url+'BaseService/actualizar',
         type: 'POST',
         dataType: 'json',
         data: {payment : payment},

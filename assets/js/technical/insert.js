@@ -16,7 +16,7 @@ $('#form').submit(function(e){
         writeUserData(user.uid, name, phone);
         data.append('id', user.uid);
         $.ajax({
-          url: base_url+'cTechnical/agregar',
+          url: base_url+'Technical/agregar',
           type: 'POST',
           dataType: 'json',
           data: data,

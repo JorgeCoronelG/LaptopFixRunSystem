@@ -25,7 +25,7 @@ $('#tabla-abonos').DataTable({
     'filter': true,
     'stateSave': true,
     'ajax':{
-        "url": base_url+"cTechnical/obtenerTecnicos",
+        "url": base_url+"Technical/obtenerTecnicos",
         "type": "POST",
         dataSrc: ''
     },
@@ -58,7 +58,7 @@ $('#tabla-abonos').DataTable({
 function payment(id){
     var payment = $('#payment').val();
     $.ajax({
-        url: base_url+'cPayment/update',
+        url: base_url+'Payment/update',
         type: 'POST',
         dataType: 'json',
         data: { id : id, payment : payment},

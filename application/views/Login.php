@@ -39,7 +39,7 @@
     <div class="login-box-body">
       <p class="login-box-msg">Iniciar sesión</p>
 
-      <form action="<?=base_url();?>cIndex/login" method="post">
+      <form action="<?=base_url();?>Index/login" method="post">
         <div class="form-group has-feedback">
           <input type="email" class="form-control" name="txtUser" placeholder="Correo electrónico" 
           autocomplete="off" required>

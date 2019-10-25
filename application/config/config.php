@@ -24,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/LaptopFixRun/';
+//$config['base_url'] = 'http://laptopsenqueretaro.com/laptopfixrun/';
 
 /*
 |--------------------------------------------------------------------------
