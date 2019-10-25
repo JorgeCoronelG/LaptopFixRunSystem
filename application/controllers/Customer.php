@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class cCustomer extends CI_Controller {
+class Customer extends CI_Controller {
     
     function __construct(){
         parent::__construct();
-        $this->load->model('mUser');
-        $this->load->model('mCustomer');
+        $this->load->model('User');
+        $this->load->model('Customer');
     }
     
     public function insert(){
@@ -16,13 +16,13 @@ class cCustomer extends CI_Controller {
         $param['clave'] = md5($this->input->post('password'));
         $param['estatus'] = 1;
         $param['tipoUsuario'] = 2;
-        $this->mUser->insert($param);
+        $this->User->insert($param);
         
         $param['id'] = $this->input->post('id');
         $param['nombre'] = $this->input->post('name');
         $param['telefono'] = $this->input->post('phone');
         
-        $this->mCustomer->insert($param);
+        $this->Customer->insert($param);
         
         $json['code'] = 5;
         echo json_encode($json);
@@ -34,7 +34,7 @@ class cCustomer extends CI_Controller {
         $param['id'] = $this->input->post('id');
         $param['nombre'] = $this->input->post('name');
         $param['telefono'] = $this->input->post('phone');
-        $this->mCustomer->update($param);
+        $this->Customer->update($param);
         $json['code'] = 6;
         echo json_encode($json);
     }

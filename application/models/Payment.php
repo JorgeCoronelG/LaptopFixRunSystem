@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class mPayment extends CI_Model {
+class Payment extends CI_Model {
     
     public function __construct() {
         parent::__construct();

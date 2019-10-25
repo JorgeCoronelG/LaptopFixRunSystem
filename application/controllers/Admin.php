@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class cAdmin extends CI_Controller {
+class Admin extends CI_Controller {
 
     function __construct(){
         parent::__construct();
@@ -12,37 +12,37 @@ class cAdmin extends CI_Controller {
 
     public function index(){
         $data['title'] = 'Admin | Inicio';
-        $this->load->view('admin/layout/header', $data);
-        $this->load->view('admin/layout/menu');
-        $this->load->view('admin/layout/footer');
+        $this->load->view('admin/layout/Header', $data);
+        $this->load->view('admin/layout/Menu');
+        $this->load->view('admin/layout/Footer');
     }
 
     public function agregarTecnico(){
-        $this->loadView('Agregar Técnico', 'admin/technical/vInsert');
+        $this->loadView('Agregar Técnico', 'admin/technical/Insert');
     }
     
     public function gestionarTecnicos(){
-        $this->loadView('Gestionar Técnico', 'admin/technical/vManagment');
+        $this->loadView('Gestionar Técnico', 'admin/technical/Managment');
     }
     
     public function abonosTecnicos(){
-        $this->loadView('Abonos Técnicos', 'admin/technical/vPayment');
+        $this->loadView('Abonos Técnicos', 'admin/technical/Payment');
     }
     
     public function gestionarServicioBase(){
-        $this->loadView('Servicio base', 'admin/baseService/vManagment');
+        $this->loadView('Servicio base', 'admin/baseService/Managment');
     }
     
     public function gestionarComision(){
-        $this->loadView('Comisión técnicos', 'admin/technical/vCommission');
+        $this->loadView('Comisión técnicos', 'admin/technical/Commission');
     }
     
     public function loadView($title, $file){
         $data['title'] = $title;
-        $this->load->view('admin/layout/header', $data);
-        $this->load->view('admin/layout/menu');
+        $this->load->view('admin/layout/Header', $data);
+        $this->load->view('admin/layout/Menu');
         $this->load->view($file);
-        $this->load->view('admin/layout/footer');
+        $this->load->view('admin/layout/Footer');
     }
     
     public function logout(){

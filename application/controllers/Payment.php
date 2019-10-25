@@ -1,18 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class cPayment extends CI_Controller {
+class Payment extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->load->model('mPayment');
+        $this->load->model('Payment');
     }
     
     public function update(){
         $param = array();
         $param['id'] = $this->input->post('id');
         $param['payment'] = $this->input->post('payment');
-        $this->mPayment->update($param);
+        $this->Payment->update($param);
         echo TRUE;
     }
     
