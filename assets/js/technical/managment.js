@@ -25,7 +25,7 @@ $('#tabla-tecnicos').DataTable({
     'filter': true,
     'stateSave': true,
     'ajax':{
-        "url": base_url+"Technical/obtenerTecnicos",
+        "url": base_url+"TechnicalC/obtenerTecnicos",
         "type": "POST",
         dataSrc: ''
     },
@@ -79,7 +79,7 @@ $('#form-update').submit(function(e){
     e.preventDefault();
     
     $.ajax({
-        url: base_url+'Technical/actualizar',
+        url: base_url+'TechnicalC/actualizar',
         type: 'POST',
         dataType: 'json',
         data: $(this).serialize(),
@@ -103,7 +103,7 @@ $('#form-update-credential').submit(function(e){
     e.preventDefault();
     
     $.ajax({
-        url: base_url+'Technical/actualizarINE',
+        url: base_url+'TechnicalC/actualizarINE',
         type: 'POST',
         dataType: 'json',
         data: new FormData(this),
@@ -128,7 +128,7 @@ $('#form-update-compAdd').submit(function(e){
     e.preventDefault();
     
     $.ajax({
-        url: base_url+'Technical/actualizarCompDom',
+        url: base_url+'TechnicalC/actualizarCompDom',
         type: 'POST',
         dataType: 'json',
         data: new FormData(this),
@@ -169,7 +169,7 @@ function updateTech(id, name, phone){
 
 function del(email){
     $.ajax({
-        url: base_url+'User/changeStatus',
+        url: base_url+'UserC/changeStatus',
         type: 'POST',
         dataType: 'json',
         data: { email : email, status : 0},

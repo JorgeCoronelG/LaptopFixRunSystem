@@ -25,7 +25,7 @@ $('#tabla-comision').DataTable({
     'filter': true,
     'stateSave': true,
     'ajax':{
-        "url": base_url+"Technical/obtenerTecnicos",
+        "url": base_url+"TechnicalC/obtenerTecnicos",
         "type": "POST",
         dataSrc: ''
     },
@@ -58,7 +58,7 @@ $('#tabla-comision').DataTable({
 function commission(id){
     var commission = $('#commission').val();
     $.ajax({
-        url: base_url+'Commission/update',
+        url: base_url+'CommissionC/update',
         type: 'POST',
         dataType: 'json',
         data: { id : id, commission : commission},
