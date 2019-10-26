@@ -12,10 +12,10 @@
             </span>
             </a>
             <ul class="treeview-menu">
-            <li><a href="<?=base_url();?>Admin/agregarTecnico"><i class="fa fa-circle-o"></i> Añadir</a></li>
-            <li><a href="<?=base_url();?>Admin/gestionarTecnicos"><i class="fa fa-circle-o"></i> Gestionar</a></li>
-            <li><a href="<?=base_url();?>Admin/abonosTecnicos"><i class="fa fa-circle-o"></i> Abonos</a></a></li>
-            <li><a href="<?=base_url();?>Admin/gestionarComision"><i class="fa fa-circle-o"></i> Comisión</a></a></li>
+            <li><a href="<?=base_url();?>AdminC/agregarTecnico"><i class="fa fa-circle-o"></i> Añadir</a></li>
+            <li><a href="<?=base_url();?>AdminC/gestionarTecnicos"><i class="fa fa-circle-o"></i> Gestionar</a></li>
+            <li><a href="<?=base_url();?>AdminC/abonosTecnicos"><i class="fa fa-circle-o"></i> Abonos</a></a></li>
+            <li><a href="<?=base_url();?>AdminC/gestionarComision"><i class="fa fa-circle-o"></i> Comisión</a></a></li>
             </ul>
         </li>
         
@@ -27,7 +27,7 @@
             </span>
             </a>
             <ul class="treeview-menu">
-            <li><a href="<?=base_url();?>Admin/gestionarServicioBase"><i class="fa fa-circle-o"></i> Gestionar</a></li>
+            <li><a href="<?=base_url();?>AdminC/gestionarServicioBase"><i class="fa fa-circle-o"></i> Gestionar</a></li>
             </ul>
         </li>
         </ul>

@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User extends CI_Controller {
+class UserC extends CI_Controller {
     
     function __construct(){
         parent::__construct();
-        $this->load->model('User');
-        $this->load->model('Customer');
-        $this->load->model('Technical');
+        $this->load->model('UserM');
+        $this->load->model('CustomerM');
+        $this->load->model('TechnicalM');
     }
     
     public function login(){
@@ -15,7 +15,7 @@ class User extends CI_Controller {
         $param = array();
         $param['email'] = $this->input->post('email');
         $param['password'] = md5($this->input->post('password'));
-        $user = $this->User->login($param);
+        $user = $this->UserM->login($param);
         if($user != NULL){
             if($user->status == 1){
                 switch($user->idTypeUser){
@@ -25,7 +25,7 @@ class User extends CI_Controller {
                         $json['user']['typeUser'] = $user->idTypeUser;
                         break;
                     case 2:
-                        $customer = $this->Customer->getCustomerByEmail($user->email);
+                        $customer = $this->CustomerM->getCustomerByEmail($user->email);
                         if($customer != null){
                             $json['code'] = 2;
                             $json['user']['id'] = $customer->idCus;
@@ -39,7 +39,7 @@ class User extends CI_Controller {
                         }
                         break;
                     case 3:
-                        $technical = $this->Technical->getTechnicalByEmail($user->email);
+                        $technical = $this->TechnicalM->getTechnicalByEmail($user->email);
                         if($technical != null){
                             $json['code'] = 3;
                             $json['user']['id'] = $technical->idTech;
@@ -69,7 +69,7 @@ class User extends CI_Controller {
         $param = array();
         $param['correoN'] = $this->input->post('emailN');
         $param['correoV'] = $this->input->post('emailV');
-        $this->User->changeEmail($param);
+        $this->UserM->changeEmail($param);
         $json['email'] = $param['correoN'];
         $json['code'] = 13;
         echo json_encode($json);
@@ -80,7 +80,7 @@ class User extends CI_Controller {
         $param = array();
         $param['email'] = $this->input->post('email');
         $param['password'] = md5($this->input->post('password'));
-        $this->User->changePassword($param);
+        $this->UserM->changePassword($param);
         $json['code'] = 4;
         echo json_encode($json);
     }
@@ -89,7 +89,7 @@ class User extends CI_Controller {
         $param = array();
         $param['status'] = $this->input->post('status');
         $param['email'] = $this->input->post('email');
-        $this->User->changeStatus($param);
+        $this->UserM->changeStatus($param);
         echo TRUE;
     }
     

@@ -1,21 +1,21 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class BaseService extends CI_Controller {
+class BaseServiceC extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->load->model('BaseService');
+        $this->load->model('BaseServiceM');
     }
     
     public function actualizar(){
         $payment = $this->input->post('payment');
-        $this->BaseService->update($payment);
+        $this->BaseServiceM->update($payment);
         echo TRUE;
     }
     
     public function obtener(){
-        echo json_encode($this->BaseService->get());
+        echo json_encode($this->BaseServiceM->get());
     }
     
 }

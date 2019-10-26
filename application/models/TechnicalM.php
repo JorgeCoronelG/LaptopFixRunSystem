@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Technical extends CI_Model{
+class TechnicalM extends CI_Model{
 
     function __construct(){
         parent::__construct();

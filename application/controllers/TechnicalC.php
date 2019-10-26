@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Technical extends CI_Controller{
+class TechnicalC extends CI_Controller{
 
     function __construct(){
         parent::__construct();
-        $this->load->model('Technical');
-        $this->load->model('User');
-        $this->load->model('Payment');
-        $this->load->model('Commission');
+        $this->load->model('TechnicalM');
+        $this->load->model('UserM');
+        $this->load->model('PaymentM');
+        $this->load->model('CommissionM');
     }
 
     public function agregar(){
@@ -18,7 +18,7 @@ class Technical extends CI_Controller{
         $param['clave'] = md5($this->input->post('txtPassword'));
         $param['estatus'] = 1;//Está activo
         $param['tipoUsuario'] = 3;//3 -> Técnico
-        $this->User->insert($param);
+        $this->UserM->insert($param);
 
         $param['id'] = $this->input->post('id');
         $param['nombre'] = $this->input->post('txtName');
@@ -35,13 +35,13 @@ class Technical extends CI_Controller{
                 $file_info_a = $this->upload->data();
                 $param['compDomicilio'] = $file_info_a['file_name'];
                 //Insertar a la base de datos
-                $this->Technical->insert($param);
+                $this->TechnicalM->insert($param);
                 //Insertar en la tabla de abono
                 $param['payment'] = 0;
-                $this->Payment->insert($param);
+                $this->PaymentM->insert($param);
                 //Insertar en la tabla de comisión - Por default es el 20%
                 $param['comision'] = 20;
-                $this->Commission->insert($param);
+                $this->CommissionM->insert($param);
                 
                 $json['code'] = 200;
             }else{
@@ -63,7 +63,7 @@ class Technical extends CI_Controller{
         $param['nombre'] = $this->input->post('txtName');
         $param['domicilio'] = $this->input->post('txtAddress');
         $param['telefono'] = $this->input->post('txtPhone');
-        $this->Technical->update($param);
+        $this->TechnicalM->update($param);
         echo TRUE;
     }
     
@@ -71,13 +71,13 @@ class Technical extends CI_Controller{
         $json = array();
         $param = array();
         $param['id'] = $this->input->post('idTechINE');
-        $tecnico = $this->Technical->getTechnical($param['id']);
+        $tecnico = $this->TechnicalM->getTechnical($param['id']);
         unlink('./uploads/documentos/'.$tecnico->ifeTech);
         $this->configurarRuta();
         if($this->upload->do_upload('credential')){
             $file_info_c = $this->upload->data();
             $param['credencial'] = $file_info_c['file_name'];
-            $this->Technical->updateINE($param);
+            $this->TechnicalM->updateINE($param);
             $json['code'] = 200;
         }else{
             $json['code'] = 404;
@@ -90,13 +90,13 @@ class Technical extends CI_Controller{
         $json = array();
         $param = array();
         $param['id'] = $this->input->post('idTechAdd');
-        $tecnico = $this->Technical->getTechnical($param['id']);
+        $tecnico = $this->TechnicalM->getTechnical($param['id']);
         unlink('./uploads/documentos/'.$tecnico->comAddTech);
         $this->configurarRuta();
         if($this->upload->do_upload('address')){
             $file_info_c = $this->upload->data();
             $param['compDomicilio'] = $file_info_c['file_name'];
-            $this->Technical->updateCompAdd($param);
+            $this->TechnicalM->updateCompAdd($param);
             $json['code'] = 200;
         }else{
             $json['code'] = 404;
@@ -106,7 +106,7 @@ class Technical extends CI_Controller{
     }
     
     public function obtenerTecnicos(){
-        echo json_encode($this->Technical->getAll());
+        echo json_encode($this->TechnicalM->getAll());
     }
 
     public function configurarRuta(){

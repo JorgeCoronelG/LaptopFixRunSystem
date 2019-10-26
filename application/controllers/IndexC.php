@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Index extends CI_Controller {
+class IndexC extends CI_Controller {
 
     function __construct(){
         parent::__construct();
-        $this->load->model('User');
+        $this->load->model('UserM');
         if($this->session->userdata('user')){
-            redirect(base_url().'Admin');
+            redirect(base_url().'AdminC');
         }
     }
 
@@ -19,7 +19,7 @@ class Index extends CI_Controller {
         $param = array();
         $param['email'] = $this->input->post('txtUser');
         $param['password'] = md5($this->input->post('txtPassword'));
-        $result = $this->User->login($param);
+        $result = $this->UserM->login($param);
         if($result != NULL){
             $data = array(
                 'user' => $result->email
