@@ -12,7 +12,7 @@ class UserM extends CI_Model{
             'email' => $param['correo'],
             'password' => $param['clave'],
             'status' => $param['estatus'],
-            'idTypeUser' => $param['tipoUsuario']
+            'typeUser' => $param['tipoUsuario']
         );
         $this->db->insert('USER', $campos);
         return TRUE;

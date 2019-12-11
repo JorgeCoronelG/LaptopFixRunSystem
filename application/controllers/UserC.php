@@ -18,11 +18,11 @@ class UserC extends CI_Controller {
         $user = $this->UserM->login($param);
         if($user != NULL){
             if($user->status == 1){
-                switch($user->idTypeUser){
+                switch($user->typeUser){
                     case 1:
                         $json['code'] = 1;
                         $json['user']['email'] = $user->email;
-                        $json['user']['typeUser'] = $user->idTypeUser;
+                        $json['user']['typeUser'] = $user-typeUser;
                         break;
                     case 2:
                         $customer = $this->CustomerM->getCustomerByEmail($user->email);
@@ -32,7 +32,7 @@ class UserC extends CI_Controller {
                             $json['user']['name'] = $customer->nameCus;
                             $json['user']['phone'] = $customer->phoneCus;
                             $json['user']['email'] = $user->email;
-                            $json['user']['typeUser'] = $user->idTypeUser;
+                            $json['user']['typeUser'] = $user->typeUser;
                         }else{
                             $json['code'] = 404;
                             $json['message'] = "Datos no encontrados";
@@ -46,7 +46,7 @@ class UserC extends CI_Controller {
                             $json['user']['name'] = $technical->nameTech;
                             $json['user']['number'] = $technical->phoneTech;
                             $json['user']['email'] = $user->email;
-                            $json['user']['typeUser'] = $user->idTypeUser;
+                            $json['user']['typeUser'] = $user->typeUser;
                         }else{
                             $json['code'] = 404;
                             $json['message'] = "Datos no encontrados";

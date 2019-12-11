@@ -25,4 +25,12 @@ class CommissionM extends CI_Model {
         return TRUE;
     }
     
+    public function get($id){
+        $this->db->select('*');
+        $this->db->from('COMMISSION');
+        $this->db->where('idTech', $id);
+        $result = $this->db->get();
+        return $result->row();
+    }
+    
 }

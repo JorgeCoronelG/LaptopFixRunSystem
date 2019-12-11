@@ -7,6 +7,7 @@ class CustomerC extends CI_Controller {
         parent::__construct();
         $this->load->model('UserM');
         $this->load->model('CustomerM');
+        $this->load->model('FiscalDataM');
     }
     
     public function insert(){
@@ -23,6 +24,7 @@ class CustomerC extends CI_Controller {
         $param['telefono'] = $this->input->post('phone');
         
         $this->CustomerM->insert($param);
+        $this->FiscalDataM->insert($param);
         
         $json['code'] = 5;
         echo json_encode($json);

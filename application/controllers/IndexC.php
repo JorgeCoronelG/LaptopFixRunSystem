@@ -27,7 +27,7 @@ class IndexC extends CI_Controller {
             //SESSION
             $this->session->set_userdata($data);
             
-            $url = base_url()."Admin";
+            $url = base_url()."AdminC";
             redirect($url);
         }else{
             $data = array();
