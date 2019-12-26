@@ -25,25 +25,18 @@ $('#tabla-abonos').DataTable({
     'filter': true,
     'stateSave': true,
     'ajax':{
-        "url": base_url+"TechnicalC/obtenerTecnicos",
+        "url": base_url+"PaymentC/obtenerPagos",
         "type": "POST",
         dataSrc: ''
     },
     'columns':[
         {data: 'nameTech'},
+        {data: 'phoneTech'},
+        {data: 'email'},
+        {data: 'payment'},
         {'orderable': true,
             render: function(data, type, row){
-                return '$'+row.payment;
-            }
-        },
-        {'orderable': true,
-            render: function(data,type,row){
-                return '<input type="number" class="form-control" value="0" id="payment" name="payment"/>';
-            }
-        },
-        {'orderable': true,
-            render: function(data, type, row){
-                return '<button class="btn btn-success" onclick="payment(\''+row.idTech+'\');"><i class="fa fa-money"></i></button>';
+                return '<button class="btn btn-success" onclick="payment(\''+row.idTech+'\',\''+row.idDateH+'\');"><i class="fa fa-money"></i></button>';
             }
         }
     ],
@@ -55,13 +48,12 @@ $('#tabla-abonos').DataTable({
     ]
 });
 
-function payment(id){
-    var payment = $('#payment').val();
+function payment(tecnico, servicio){
     $.ajax({
         url: base_url+'PaymentC/update',
         type: 'POST',
         dataType: 'json',
-        data: { id : id, payment : payment},
+        data: { tecnico : tecnico, servicio : servicio },
         success: function(data){
             if(data == true){
                 location.reload();

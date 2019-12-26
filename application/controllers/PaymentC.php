@@ -10,10 +10,14 @@ class PaymentC extends CI_Controller {
     
     public function update(){
         $param = array();
-        $param['id'] = $this->input->post('id');
-        $param['payment'] = $this->input->post('payment');
+        $param['tecnico'] = $this->input->post('tecnico');
+        $param['servicio'] = $this->input->post('servicio');
         $this->PaymentM->update($param);
         echo TRUE;
+    }
+    
+    public function obtenerPagos(){
+        echo json_encode($this->PaymentM->findAll());
     }
     
 }

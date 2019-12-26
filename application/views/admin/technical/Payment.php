@@ -8,9 +8,10 @@
                 <thead>
                     <tr>
                         <th style="background-color: #006699; color: white">Nombre del técnico</th>
-                        <th style="background-color: #006699; color: white">Abono/Pago</th>
+                        <th style="background-color: #006699; color: white">Teléfono</th>
+                        <th style="background-color: #006699; color: white">Correo electrónico</th>
                         <th style="width: 15%; background-color: #006699; color: white">Cantidad</th>
-                        <th style="width: 15%; background-color: #006699; color: white">Abonar</th>
+                        <th style="width: 15%; background-color: #006699; color: white">Abono</th>
                     </tr>
                 </thead>
             </table>

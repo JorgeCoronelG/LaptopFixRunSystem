@@ -18,10 +18,26 @@ class PaymentM extends CI_Model {
         return TRUE;
     }
     
+    public function findAll(){
+        $this->db->select('p.*, t.*');
+        $this->db->from('PAYMENT p');
+        $this->db->join('TECHNICAL t', 'p.idTech = t.idTech');
+        $this->db->where('p.status', 0);
+        $this->db->order_by('t.nameTech', 'ASC');
+        $result = $this->db->get();
+        return $result->result();
+    }
+    
     public function update($param){
-        $sql = "UPDATE PAYMENT SET payment = payment + ".$param['payment']." "
-                . "WHERE idTech = '".$param['id']."'";
-        $this->db->query($sql);
+        $campo = array(
+            'status' => 1
+        );
+        $where = array(
+            'idTech' => $param['tecnico'],
+            'idDateH' => $param['servicio']
+        );
+        $this->db->where($where);
+        $this->db->update('PAYMENT', $campo);
         return TRUE;
     }
     
