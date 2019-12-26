@@ -10,7 +10,9 @@ class PaymentM extends CI_Model {
     public function insert($param){
         $campos = array(
             'idTech' => $param['id'],
-            'payment' => $param['payment']
+            'payment' => $param['pago'],
+            'idDateH' => $param['servicio'],
+            'status' => 0
         );
         $this->db->insert('PAYMENT', $campos);
         return TRUE;

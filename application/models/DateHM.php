@@ -15,6 +15,8 @@ class DateHM extends CI_Model{
             'address' => $param['domicilio'],
             'descProblem' => $param['problema'],
             'service' => $param['servicio'],
+            'payment' => $param['pago'],
+            'bill' => $param['factura'],
             'status' => 0
         );
         $this->db->insert('DATE_H', $campos);

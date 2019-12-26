@@ -37,6 +37,10 @@ class AdminC extends CI_Controller {
         $this->loadView('Comisión técnicos', 'admin/technical/Commission');
     }
     
+    public function gestionarFactura(){
+        $this->loadView('Gestionar facturas', 'admin/bill/Managment');
+    }
+    
     public function loadView($title, $file){
         $data['title'] = $title;
         $this->load->view('admin/layout/Header', $data);

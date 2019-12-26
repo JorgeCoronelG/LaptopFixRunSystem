@@ -19,7 +19,7 @@ class BaseServiceM extends CI_Model {
         $this->db->select('*');
         $this->db->from('BASE_SERVICE');
         $result = $this->db->get();
-        return $result->result();
+        return $result->row();
     }
     
 }

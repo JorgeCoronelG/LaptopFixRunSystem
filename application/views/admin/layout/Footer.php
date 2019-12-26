@@ -72,5 +72,10 @@ reserved.
 <script src="<?=base_url();?>assets/js/baseService/managment.js"></script>
 <?php endif; ?>
 
+<!--JS Facturas-->
+<?php if($this->uri->segment(2) == 'gestionarFactura'): ?>
+<script src="<?=base_url();?>assets/js/bill/managment.js"></script>
+<?php endif; ?>
+
 </body>
 </html>

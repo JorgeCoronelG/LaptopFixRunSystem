@@ -7,7 +7,6 @@ class TechnicalC extends CI_Controller{
         parent::__construct();
         $this->load->model('TechnicalM');
         $this->load->model('UserM');
-        $this->load->model('PaymentM');
         $this->load->model('CommissionM');
     }
 
@@ -36,9 +35,6 @@ class TechnicalC extends CI_Controller{
                 $param['compDomicilio'] = $file_info_a['file_name'];
                 //Insertar a la base de datos
                 $this->TechnicalM->insert($param);
-                //Insertar en la tabla de abono
-                $param['payment'] = 0;
-                $this->PaymentM->insert($param);
                 //Insertar en la tabla de comisión - Por default es el 20%
                 $param['comision'] = 20;
                 $this->CommissionM->insert($param);

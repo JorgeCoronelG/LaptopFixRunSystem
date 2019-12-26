@@ -21,10 +21,8 @@ class BaseServiceC extends CI_Controller {
     public function get(){
         $json = array();
         $json['code'] = 14;
-        $baseService = $this->BaseServiceM->get();
-        foreach($baseService as $bs){
-            $json['baseService'] = $bs->baseService;
-        }
+        $bs = $this->BaseServiceM->get();
+        $json['baseService'] = $bs->baseService;
         echo json_encode($json);
     }
     

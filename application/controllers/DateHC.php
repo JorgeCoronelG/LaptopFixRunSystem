@@ -17,6 +17,8 @@ class DateHC extends CI_Controller {
         $param['domicilio'] = $this->input->post('address');
         $param['problema'] = $this->input->post('problem');
         $param['servicio'] = $this->input->post('service');
+        $param['pago'] = $this->input->post('payment');
+        $param['factura'] = $this->input->post('bill');
         $json['id'] = $this->DateHM->insert($param);
         ($json['id'] != '') ? $json['code'] = "8" : $json['code'] = "404";
         echo json_encode($json);

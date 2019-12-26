@@ -12,10 +12,19 @@ class DeliverM extends CI_Model {
             'idDateH' => $param['servicio'],
             'dateDel' => $param['fecha'],
             'descDel' => $param['solucion'],
-            'costDel' => $param['costo']
+            'costDel' => $param['costo'],
+            'idTech' => $param['tecnico']
         );
         $this->db->insert('DELIVER', $campos);
         return TRUE;
+    }
+    
+    public function get($id){
+        $this->db->select('*');
+        $this->db->from('DELIVER');
+        $this->db->where('idDateH', $id);
+        $result = $this->db->get();
+        return $result->row();
     }
     
 }
